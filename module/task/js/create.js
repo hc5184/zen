@@ -8,6 +8,18 @@ function copyStoryTitle()
     $('#name').attr('value', storyTitle);
 }
 
+function copyStoryPri()
+{
+    var storyTitle = $('#story option:selected').text();
+    startPos= storyTitle.indexOf('(') + 1;
+    startPosition = storyTitle.indexOf(':',startPos) + 1;
+    endPosition   = storyTitle.lastIndexOf(',');
+    priVal = storyTitle.substr(startPosition, endPosition - startPosition);
+
+    $('#pri option:selected').val(priVal);
+    $('#pri option:selected').text(priVal);
+}
+
 /* Set the assignedTos field. */
 function setOwners(result)
 {
@@ -32,6 +44,9 @@ function setStoryRelated()
 {
     setPreview();
     if($('#module').val() == 0) setStoryModule();
+
+    copyStoryTitle();
+    copyStoryPri();
 }
 
 /* Set the story module. */

@@ -76,15 +76,7 @@
             ?>
             <?php if(!$hiddenPri):?>
             <?php
-            $hasCustomPri = false;
-            foreach($lang->task->priList as $priKey => $priValue)
-            {
-                if($priKey != $priValue)
-                {
-                    $hasCustomPri = true;
-                    break;
-                }
-            }
+            $hasCustomPri = true;
             ?>
             <div class='col-table<?php if($hasCustomPri) echo ' has-custom-pri';?>' id='priRowCol'>
               <div class='input-group'>
