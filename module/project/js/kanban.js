@@ -46,11 +46,6 @@ $(function()
                 if(selfClose != 1 && lastOperation)
                 {
                     $item = $('#' + type + '-' + lastOperation.id);
-                    for(var status in statusMap[type])
-                    {
-                        $item.removeClass('board-' + type + '-' + status);
-                    }
-                    $item.addClass('board-' + type + '-' + lastOperation.from).insertBefore($item.closest('tr').find('.col-'+lastOperation.from + ' .board-shadow'));
                 }
                 else
                 {
