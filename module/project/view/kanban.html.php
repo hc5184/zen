@@ -53,14 +53,14 @@
     <tbody>
       <?php $rowIndex = 0; ?>
       <?php foreach($stories as $story):?>
-      <?php if(count(get_object_vars($story)) == 0) continue;?>
+      <?php if(count(get_object_vars($story)) == 0 or $story->status == 'closed') continue;?>
       <tr data-id='<?php echo $rowIndex++?>'>
         <?php if($hasStory):?>
         <td class='col-story'>
           <?php if(!empty($story->id)):?>
           <div class='board board-story stage-<?php echo $story->stage?><?php if($story->assignedTo == $this->app->user->account) echo ' inverse';?>' data-id='<?php echo $story->id?>'>
             <div class='board-title'>
-              <?php echo html::a($this->createLink('story', 'view', "storyID=$story->id", '', true), $story->title, '', 'class="kanbanFrame" title="' . $story->title . '"');?>
+              <?php echo html::a($this->createLink('story', 'view', "storyID=$story->id", '', true), '(' . $lang->story->statusList[$story->status] . ') ' . $story->title , '', 'class="kanbanFrame" title="' . $story->title . '"');?>
               <div class='board-actions'>
                 <button type='button' class='btn btn-mini btn-link btn-info-toggle'><i class='icon-angle-down'></i></button>
                 <div class='dropdown'>
